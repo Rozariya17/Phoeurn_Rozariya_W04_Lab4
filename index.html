@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Lab 4</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="p-10 bg-base-200">
+
+    <div class="container mx-auto space-y-10">
+
+        <div class="card bg-base-100 shadow-xl p-6">
+            <h2 class="text-xl font-bold mb-4">1. Leap Year Checker</h2>
+            <button class="btn btn-primary" onclick="checkLeapYear()">Check Leap Year</button>
+            <p id="leapResult" class="mt-4"></p>
+        </div>
+
+        <div class="card bg-base-100 shadow-xl p-6">
+            <h2 class="text-xl font-bold mb-4">2. Join Array Elements</h2>
+            <button class="btn btn-secondary" onclick="joinArray()">Join Array</button>
+            <p id="arrayResult" class="mt-4"></p>
+        </div>
+
+        <div class="card bg-base-100 shadow-xl p-6">
+            <h2 class="text-xl font-bold mb-4">3. Greeting According to Time</h2>
+            <button class="btn btn-accent" onclick="greetUser()">Greet Me</button>
+            <p id="greetResult" class="mt-4"></p>
+        </div>
+
+        <div class="card bg-base-100 shadow-xl p-6">
+            <h2 class="text-xl font-bold mb-4">4. Caesar Cipher</h2>
+
+            <div class="form-control mb-4">
+                <label class="label">Text</label>
+                <input type="text" id="textInput" class="input input-bordered">
+            </div>
+
+            <div class="form-control mb-4">
+                <label class="label">Shift</label>
+                <input type="number" id="shiftInput" class="input input-bordered">
+            </div>
+
+            <div class="space-x-4">
+                <button class="btn btn-success" onclick="encrypt()">Encrypt</button>
+                <button class="btn btn-error" onclick="decrypt()">Decrypt</button>
+            </div>
+
+            <p id="cipherResult" class="mt-4"></p>
+        </div>
+
+    </div>
+
+<script>
+function checkLeapYear() {
+    let year = prompt("Enter a year:");
+    let result;
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+        result = year + " is a Leap Year";
+    } else {
+        result = year + " is Not a Leap Year";
+    }
+    document.getElementById("leapResult").innerHTML = result;
+}
+
+function joinArray() {
+    let myColor = ["Red", "Green", "White", "Black"];
+    let result = "";
+    for (let i = 0; i < myColor.length; i++) {
+        result += myColor[i];
+        if (i != myColor.length - 1) {
+            result += ",";
+        }
+    }
+    document.getElementById("arrayResult").innerHTML = result;
+}
+
+function greetUser() {
+    const d = new Date();
+    let hour = d.getHours();
+    let greeting;
+    if (hour < 12) {
+        greeting = "Good Morning";
+    } else if (hour < 18) {
+        greeting = "Good Afternoon";
+    } else {
+        greeting = "Good Evening";
+    }
+    document.getElementById("greetResult").innerHTML = greeting;
+}
+
+function encrypt() {
+    let text = document.getElementById("textInput").value;
+    let shift = parseInt(document.getElementById("shiftInput").value);
+    let result = "";
+    for (let i = 0; i < text.length; i++) {
+        let char = text[i];
+        if (char >= 'A' && char <= 'Z') {
+            result += String.fromCharCode((char.charCodeAt(0) - 65 + shift) % 26 + 65);
+        } else if (char >= 'a' && char <= 'z') {
+            result += String.fromCharCode((char.charCodeAt(0) - 97 + shift) % 26 + 97);
+        } else {
+            result += char;
+        }
+    }
+    document.getElementById("cipherResult").textContent = result;
+}
+
+function decrypt() {
+    let text = document.getElementById("textInput").value;
+    let shift = parseInt(document.getElementById("shiftInput").value);
+    let result = "";
+    for (let i = 0; i < text.length; i++) {
+        let char = text[i];
+        if (char >= 'A' && char <= 'Z') {
+            result += String.fromCharCode((char.charCodeAt(0) - 65 - shift + 26) % 26 + 65);
+        } else if (char >= 'a' && char <= 'z') {
+            result += String.fromCharCode((char.charCodeAt(0) - 97 - shift + 26) % 26 + 97);
+        } else {
+            result += char;
+        }
+    }
+    document.getElementById("cipherResult").textContent = result;
+}
+</script>
+
+</body>
+</html>
