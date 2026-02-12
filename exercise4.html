@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+<div class="min-h-screen flex items-center justify-center px-4">
+    <div class="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">Exercise 4: Caesar Cipher</h1>
+
+        <input type="text" id="textInput" placeholder="Enter Text" class="w-full px-4 py-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <input type="number" id="shiftInput" placeholder="Enter Shift class="w-full px-4 py-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        
+        <div class="flex gap-2 mb-4">
+            <button onclick="encrypt()" class="flex-1 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition font-semibold">Encrypt</button>
+            <button onclick="decrypt()" class="flex-1 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition font-semibold">Decrypt</button>
+        </div>
+
+        <div id="result" class="mt-4 p-4 bg-blue-50 rounded-lg text-gray-800 text-center font-semibold break-words"></div>
+
+        <a href="index.html" class="block mt-6 px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition text-center font-semibold">Back</a>
+    </div>
+</div>
+
+<script>
+function encrypt() {
+    let text = document.getElementById("textInput").value;
+    let shift = parseInt(document.getElementById("shiftInput").value);
+    let result = "";
+
+    for (let i = 0; i < text.length; i++) {
+        let char = text[i];
+
+        if (char >= 'A' && char <= 'Z') {
+            result += String.fromCharCode((char.charCodeAt(0) - 65 + shift) % 26 + 65);
+        } else if (char >= 'a' && char <= 'z') {
+            result += String.fromCharCode((char.charCodeAt(0) - 97 + shift) % 26 + 97);
+        } else {
+            result += char;
+        }
+    }
+
+    document.getElementById("result").innerHTML = result;
+}
+
+function decrypt() {
+    let text = document.getElementById("textInput").value;
+    let shift = parseInt(document.getElementById("shiftInput").value);
+    let result = "";
+
+    for (let i = 0; i < text.length; i++) {
+        let char = text[i];
+
+        if (char >= 'A' && char <= 'Z') {
+            result += String.fromCharCode((char.charCodeAt(0) - 65 - shift + 260) % 26 + 65);
+        } else if (char >= 'a' && char <= 'z') {
+            result += String.fromCharCode((char.charCodeAt(0) - 97 - shift + 260) % 26 + 97);
+        } else {
+            result += char;
+        }
+    }
+
+    document.getElementById("result").innerHTML = result;
+}
+</script>
+
+</body>
+</html>
+
+<script>
+function encrypt() {
+    let text = document.getElementById("textInput").value;
+    let shift = parseInt(document.getElementById("shiftInput").value);
+    let result = "";
+
+    for (let i = 0; i < text.length; i++) {
+        let char = text[i];
+
+        if (char >= 'A' && char <= 'Z') {
+            result += String.fromCharCode((char.charCodeAt(0) - 65 + shift) % 26 + 65);
+        } else if (char >= 'a' && char <= 'z') {
+            result += String.fromCharCode((char.charCodeAt(0) - 97 + shift) % 26 + 97);
+        } else {
+            result += char;
+        }
+    }
+
+    document.getElementById("result").innerHTML = result;
+}
+
+function decrypt() {
+    let text = document.getElementById("textInput").value;
+    let shift = parseInt(document.getElementById("shiftInput").value);
+    let result = "";
+
+    for (let i = 0; i < text.length; i++) {
+        let char = text[i];
+
+        if (char >= 'A' && char <= 'Z') {
+            result += String.fromCharCode((char.charCodeAt(0) - 65 - shift + 26) % 26 + 65);
+        } else if (char >= 'a' && char <= 'z') {
+            result += String.fromCharCode((char.charCodeAt(0) - 97 - shift + 26) % 26 + 97);
+        } else {
+            result += char;
+        }
+    }
+
+    document.getElementById("result").innerHTML = result;
+}
+</script>
+
+</body>
+</html>

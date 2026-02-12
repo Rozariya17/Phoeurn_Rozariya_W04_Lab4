@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+<div class="min-h-screen flex items-center justify-center px-4">
+    <div class="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">Exercise 1: Leap Year</h1>
+
+        <input type="number" id="yearInput" placeholder="Enter Year" class="w-full px-4 py-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        
+        <button onclick="checkLeapYear()" class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition font-semibold mb-4">Check</button>
+
+        <div id="result" class="mt-4 p-4 bg-blue-50 rounded-lg text-gray-800 text-center font-semibold"></div>
+
+        <a href="index.html" class="block mt-6 px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition text-center font-semibold">Back</a>
+    </div>
+</div>
+
+<script>
+function checkLeapYear() {
+    let year = document.getElementById("yearInput").value;
+    let text;
+
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+        text = year + " is a Leap Year";
+    } else {
+        text = year + " is Not a Leap Year";
+    }
+
+    document.getElementById("result").innerHTML = text;
+}
+</script>
+
+</body>
+</html>
+
+<script>
+function checkLeapYear() {
+    let year = document.getElementById("yearInput").value;
+    let text;
+
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+        text = year + " is a Leap Year";
+    } else {
+        text = year + " is Not a Leap Year";
+    }
+
+    document.getElementById("result").innerHTML = text;
+}
+</script>
+
+</body>
+</html>

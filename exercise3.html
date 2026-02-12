@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+<div class="min-h-screen flex items-center justify-center px-4">
+    <div class="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">Exercise 3: Real Time Greeting</h1>
+
+        <button onclick="startClock()" class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition font-semibold mb-4">Start</button>
+
+        <div id="clock" class="mt-4 p-4 bg-green-50 rounded-lg text-gray-800 text-center font-semibold text-xl"></div>
+        <div id="greeting" class="mt-4 p-4 bg-purple-50 rounded-lg text-gray-800 text-center font-semibold text-lg"></div>
+
+        <a href="index.html" class="block mt-6 px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition text-center font-semibold">Back</a>
+    </div>
+</div>
+
+<script>
+function startClock() {
+    setInterval(updateTime, 1000);
+}
+
+function updateTime() {
+    const now = new Date();
+    let h = now.getHours();
+    let m = now.getMinutes();
+    let s = now.getSeconds();
+
+    if (m < 10) m = "0" + m;
+    if (s < 10) s = "0" + s;
+
+    document.getElementById("clock").innerHTML = h + ":" + m + ":" + s;
+
+    let message;
+
+    if (h >= 5 && h < 12) {
+        message = "Good Morning";
+    } else if (h >= 12 && h < 17) {
+        message = "Good Afternoon";
+    } else if (h >= 17 && h < 20) {
+        message = "Good Evening";
+    } else {
+        message = "Good Night";
+    }
+
+    document.getElementById("greeting").innerHTML = message;
+}
+</script>
+
+</body>
+</html>
+
+<script>
+function startClock() {
+    setInterval(updateTime, 1000);
+}
+
+function updateTime() {
+    const now = new Date();
+    let h = now.getHours();
+    let m = now.getMinutes();
+    let s = now.getSeconds();
+
+    if (m < 10) m = "0" + m;
+    if (s < 10) s = "0" + s;
+
+    document.getElementById("clock").innerHTML = h + ":" + m + ":" + s;
+
+    let message;
+
+    if (h >= 5 && h < 12) {
+        message = "Good Morning";
+    } else if (h >= 12 && h < 17) {
+        message = "Good Afternoon";
+    } else if (h >= 17 && h < 20) {
+        message = "Good Evening";
+    } else {
+        message = "Good Night";
+    }
+
+    document.getElementById("greeting").innerHTML = message;
+}
+</script>
+
+</body>
+</html>
